@@ -18,6 +18,8 @@ void MCP342X::init(byte A0, byte A1)
 	else if (A0 == H && A1 == H) I2C_ADDRESS = B1101110;
 	else if (A0 == F && A1 == L) I2C_ADDRESS = B1101011;
 	else if (A0 == F && A1 == H) I2C_ADDRESS = B1101111;
+
+	VRef = 2.048;
 }
 
 void MCP342X::selectChannel(byte channel, byte gain)
@@ -48,7 +50,7 @@ double MCP342X::readADC()
   	
 	if (t >= 32768) t = 65536l - t;
   	
-	double v = (double) t * 2.048/32768.0;
+	double v = (double) t * VRef/32768.0;
 
 	return v;
 }

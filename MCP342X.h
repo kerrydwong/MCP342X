@@ -4,7 +4,7 @@
 #include <Arduino.h>
 
 /*
- * MCP3426/7/8 Libary
+ * MCP3426/7/8 Library
  * Kerry D. Wong
  * http://www.kerrywong.com
  * 5/2012
@@ -25,6 +25,7 @@ public:
 	static const byte GAIN_2 = 1;
 	static const byte GAIN_4 = 2;
 	static const byte GAIN_8 = 3; 
+	double VRef;
 
 	void init(byte A0, byte A1);
 	void selectChannel(byte channel, byte gain = GAIN_1);
@@ -40,7 +41,6 @@ private:
 	static const byte BIT_G1 = 1; //gain
 	static const byte BIT_G0 = 0; //gain
 
-	static const double VRef = 2.048;
 	byte I2C_ADDRESS;
 };
 #endif
